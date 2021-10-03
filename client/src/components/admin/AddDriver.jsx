@@ -1,20 +1,37 @@
 import React from "react";
 
 export default function AddDriver() {
-  function callBack(clalBack2, callBack3) {
+  function callBack(callBack3, clalBack2, callBack4) {
     console.log("Call Back hell");
-    setTimeout(() => {
-      callBack3();
-    }, 3000);
+    callBack3();
+
     clalBack2();
+
+    callBack4();
   }
-  callBack(callBack3, clalBack2);
+  callBack(callBack3, clalBack2, callBack4);
   function clalBack2() {
     console.log("callBack 2");
   }
   function callBack3() {
     console.log("callBack 3");
   }
+  function callBack4() {
+    console.log("callBack 4");
+  }
+
+  // Promises
+  const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("foo");
+    }, 300);
+  });
+
+  myPromise
+    .then(handleResolvedA, handleRejectedA)
+    .then(handleResolvedB, handleRejectedB)
+    .then(handleResolvedC, handleRejectedC);
+
   return (
     <div className="container">
       <div style={{ marginTop: "25%" }}>
